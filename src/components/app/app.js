@@ -3,10 +3,10 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage/errorMessage';
-import CharacterPage from '../characterPage/characterPage'
-import ItemList from '../itemList';
-import ItemDetails from '../itemDetails';
+import CharacterPage from '../pages/characterPage/characterPage'
 import gotService from '../../services/gotService';
+import BooksPage from '../pages/booksPage/booksPage';
+import HousesPage from '../pages/housesPage/housesPage';
 
 
 export default class App extends React.Component {
@@ -54,28 +54,8 @@ export default class App extends React.Component {
                         </Col>
                     </Row>
                     <CharacterPage/>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList 
-                            onItemSelected={this.onItemSelected} 
-                            getData={this.gotService.getAllBooks}
-                            renderItem ={(item) => `${item.name}`}/>
-                        </Col>
-                        <Col md='6'>
-                            <ItemDetails itemId={this.state.selectedItem} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList 
-                            onItemSelected={this.onItemSelected} 
-                            getData={this.gotService.getAllHouses}
-                            renderItem ={(item) => `${item.name}`}/>
-                        </Col>
-                        <Col md='6'>
-                            <ItemDetails itemId={this.state.selectedItem} />
-                        </Col>
-                    </Row>
+                    <BooksPage/>
+                    <HousesPage/>
                 </Container>
             
             </>

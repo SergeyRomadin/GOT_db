@@ -31,8 +31,24 @@ export default class ItemDetails extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.itemId !== prevProps.itemId){
-            this.updateChar();
+            // this.updateChar();
+            this.updateItem();
         }
+    }
+
+    updateItem() {
+        if (this.props.updateChar) {
+            this.updateChar();
+        } else {
+            if (this.props.updateBook) {
+                this.updateBook();
+            } else {
+                if (this.props.updateHouse) {
+                    this.updateHouse();
+                }
+            }
+        }
+        
     }
 
     updateChar() {
@@ -42,6 +58,30 @@ export default class ItemDetails extends Component {
         }
 
         this.gotService.getCharacter(itemId)
+            .then((item) => {
+                this.setState({item})
+            })
+    }
+
+    updateBook() {
+        const {itemId} = this.props;
+        if (!itemId){
+            return;
+        }
+
+        this.gotService.getBook(itemId)
+            .then((item) => {
+                this.setState({item})
+            })
+    }
+
+    updateHouse() {
+        const {itemId} = this.props;
+        if (!itemId){
+            return;
+        }
+
+        this.gotService.getHouse(itemId)
             .then((item) => {
                 this.setState({item})
             })
