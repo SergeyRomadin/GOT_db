@@ -34,9 +34,11 @@ export default class HousesPage extends React.Component {
             itemId={this.state.selectedItem}
             updateHouse> 
                 <Field field='name' label='Name'/>
-                <Field field='numberOfPages' label='Number Of Pages'/>
-                <Field field='publiser' label='Publiser'/>
-                <Field field='released' label='Released'/>
+                <Field field='region' label='Region'/>
+                <Field field='words' label='Words'/>
+                <Field field='titles' label='Titles'/>
+                <Field field='overlord' label='Overlord'/>
+                <Field field='ancestralWeapons' label='AncestralWeapons'/>
             </ItemDetails>
             )
 

@@ -35,7 +35,7 @@ export default class BooksPage extends React.Component {
             updateBook> 
                 <Field field='name' label='Name'/>
                 <Field field='numberOfPages' label='Number Of Pages'/>
-                <Field field='publiser' label='Publiser'/>
+                <Field field='publisher' label='Publisher'/>
                 <Field field='released' label='Released'/>
             </ItemDetails>
             )

@@ -3,10 +3,13 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage/errorMessage';
-import CharacterPage from '../pages/characterPage/characterPage'
+import CharacterPage from '../pages/characterPage/characterPage';
 import gotService from '../../services/gotService';
 import BooksPage from '../pages/booksPage/booksPage';
+import BooksItem from '../pages/booksPage/booksItem';
 import HousesPage from '../pages/housesPage/housesPage';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import './index.css';
 
 
 export default class App extends React.Component {
@@ -41,8 +44,8 @@ export default class App extends React.Component {
         }
 
         return (
-            <>
-            
+            <Router>
+                <div className="app">
                 <Container>
                     <Header />
                 </Container>
@@ -53,12 +56,21 @@ export default class App extends React.Component {
                             <button onClick={this.toggledRandomChar}>Toggle Random Char</button>
                         </Col>
                     </Row>
-                    <CharacterPage/>
-                    <BooksPage/>
-                    <HousesPage/>
+
+                    <Route path='/characters' component={CharacterPage} />
+                    <Route path='/houses' component={HousesPage} />
+                    <Route path='/books' exact component={BooksPage} />
+                    <Route path='/books/:id' render={
+                        ({match}) => {
+                            const {id} = match.params;
+                            
+                            return <BooksItem bookId={id}/>
+                        }
+                        
+                    } />
                 </Container>
-            
-            </>
+            </div>
+            </Router>
         );
     }
 };

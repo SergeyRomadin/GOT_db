@@ -26,12 +26,11 @@ export default class ItemDetails extends Component {
     }
 
     componentDidMount() {
-        this.updateChar();
+        this.updateItem();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.itemId !== prevProps.itemId){
-            // this.updateChar();
             this.updateItem();
         }
     }
